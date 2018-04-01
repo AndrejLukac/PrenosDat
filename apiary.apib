@@ -1,0 +1,187 @@
+FORMAT: 1A
+HOST: http://polls.apiblueprint.org/
+
+# PrenosDat
+
+Polls is a simple API allowing consumers to view polls and vote in them.
+
+## List users [/api/users?page=2]
+### get list all users [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+            "page": 2,
+            "per_page": 3,
+            "total": 12,
+            "total_pages": 4,
+             "data": [
+                {
+                    "id": 4,
+                    "first_name": "Eve",
+                    "last_name": "Holt",
+                    "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/marcoramires/128.jpg"
+                },
+                {
+                    "id": 5,
+                    "first_name": "Charles",
+                    "last_name": "Morris",
+                    "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/stephenmoon/128.jpg"
+                },
+                {
+                    "id": 6,
+                    "first_name": "Tracey",
+                    "last_name": "Ramos",
+                    "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/bigmancho/128.jpg"
+                }
+              ]
+            }
+        ]      
+
+
+## Single user [/api/users/2]
+### get user [GET]
+
++ Response 200 (application/json)
+
+        {
+            "data": {
+                 "id": 2,
+                 "first_name": "Janet",
+                 "last_name": "Weaver",
+                 "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/josephstein/128.jpg"
+            }
+        }
+
+
+### put update [PUT]
+
++ Request (application/json)
+
+        {
+            "name": "morpheus",
+            "job": "zion resident"
+        }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "name": "morpheus",
+                "job": "zion resident",
+                "updatedAt": "2018-03-21T17:27:55.801Z"
+            }
+
+
+
+### patch update [PATCH]
+
++ Request (application/json)
+
+        {
+            "name": "morpheus",
+            "job": "zion resident"
+        }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "name": "morpheus",
+                "job": "zion resident",
+                "updatedAt": "2018-03-21T17:33:23.441Z"
+            }
+            
+
+### delete [DELETE]
+
++ Response 204 (application/json)
+
+
+## Single user not found [/api/users/23]
+### get user not found [GET]
+
++ Response 404 (application/json)
+
+
+## List <resource> [/api/unknown]
+### get list resouce [GET]
+
++ Response 200 (application/json)
+
+        {
+            "page": 1,
+            "per_page": 3,
+            "total": 12,
+            "total_pages": 4,
+            "data": [
+                {
+                "id": 1,
+                "name": "cerulean",
+                "year": 2000,
+                "color": "#98B2D1",
+                "pantone_value": "15-4020"
+                },
+                {
+                "id": 2,
+                "name": "fuchsia rose",
+                "year": 2001,
+                "color": "#C74375",
+                "pantone_value": "17-2031"
+                },
+                {
+                "id": 3,
+                "name": "true red",
+                "year": 2002,
+                "color": "#BF1932",
+                "pantone_value": "19-1664"
+                }
+            ]
+        }
+
+
+## Single <resource> [/api/unknown/2]
+### get single <resource> [GET]
+
++ Response 200 (application/json)
+
+        {
+            "data": {
+                    "id": 2,
+                    "name": "fuchsia rose",
+                    "year": 2001,
+                    "color": "#C74375",
+                    "pantone_value": "17-2031"
+                     }
+        }
+
+
+## Single <resource> not found [/api/unknown/23]
+### get Single <resource> not found [GET]
+
++ Response 404 (application/json)
+
+
+## Create user [/api/users]
+### post user [POST]
+
++ Request (application/json)
+
+        {
+            "name": "morpheus",
+            "job": "leader"
+        }
+    
++ Response 201 (application/json)
+
+    + Body
+
+            {
+                "name": "morpheus",
+                "job": "leader",
+                "id": "862",
+                "createdAt": "2018-03-31T13:39:45.584Z"
+            }
